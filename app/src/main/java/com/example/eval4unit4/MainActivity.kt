@@ -10,13 +10,17 @@ import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
 
-    var i:Int=1
+    private lateinit var responselist: ResponseDTO
+
+    val i:Int=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        nextBtn.setOnClickListener{
-            callAPI()
-            i++;
+        for(i in 0..50) {
+            nextBtn.setOnClickListener {
+                callAPI()
+
+            }
         }
     }
 
@@ -33,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                         dobShowing.text=dob?.date
                         phoneShowing.text=phone
                         emailShowing.text=email
-                        Glide.with(imageView).load(picture?.medium).into(imageView)
+                        Glide.with(imageView).load(picture?.thumbnail).into(imageView)
 
                     }
                 }
